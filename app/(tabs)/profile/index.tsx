@@ -13,7 +13,9 @@ import {
 import {
   User, Music, Star, BarChart3, CalendarClock, Award, Flame,
   Target, Mic, Bell, BellOff, ChevronRight, X, Check,
+  Sparkles, Calendar, Zap,
 } from 'lucide-react-native';
+import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Colors from '@/constants/colors';
 import { useApp } from '@/providers/AppProvider';
@@ -98,6 +100,27 @@ export default function ProfileScreen() {
               <Text style={styles.setVocalText}>Set Your Vocal Range</Text>
             </TouchableOpacity>
           )}
+        </View>
+
+        <View style={styles.quickActionsRow}>
+          <TouchableOpacity style={styles.quickActionBtn} onPress={() => router.push('/warmup' as never)}>
+            <View style={[styles.quickActionIcon, { backgroundColor: '#FF6B6B22' }]}>
+              <Zap size={18} color="#FF6B6B" />
+            </View>
+            <Text style={styles.quickActionLabel}>Warm-Up</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.quickActionBtn} onPress={() => router.push('/song-finder' as never)}>
+            <View style={[styles.quickActionIcon, { backgroundColor: Colors.dark.gold + '22' }]}>
+              <Sparkles size={18} color={Colors.dark.gold} />
+            </View>
+            <Text style={styles.quickActionLabel}>Song Finder</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.quickActionBtn} onPress={() => router.push('/calendar' as never)}>
+            <View style={[styles.quickActionIcon, { backgroundColor: '#45B7D122' }]}>
+              <Calendar size={18} color="#45B7D1" />
+            </View>
+            <Text style={styles.quickActionLabel}>Calendar</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.weeklyGoalCard}>
@@ -391,6 +414,18 @@ const styles = StyleSheet.create({
     color: Colors.dark.text, borderWidth: 1, borderColor: Colors.dark.border, textAlign: 'center' as const,
     fontWeight: '800' as const, marginBottom: 8,
   },
+  quickActionsRow: {
+    flexDirection: 'row' as const, paddingHorizontal: 20, gap: 10, marginBottom: 16,
+  },
+  quickActionBtn: {
+    flex: 1, backgroundColor: Colors.dark.surface, borderRadius: 14, padding: 14,
+    alignItems: 'center' as const, borderWidth: 1, borderColor: Colors.dark.border, gap: 8,
+  },
+  quickActionIcon: {
+    width: 40, height: 40, borderRadius: 20,
+    justifyContent: 'center' as const, alignItems: 'center' as const,
+  },
+  quickActionLabel: { fontSize: 12, fontWeight: '600' as const, color: Colors.dark.text },
   submitBtn: { backgroundColor: Colors.dark.gold, borderRadius: 14, paddingVertical: 16, alignItems: 'center' as const, marginTop: 16 },
   submitBtnText: { fontSize: 16, fontWeight: '700' as const, color: Colors.dark.background },
 });

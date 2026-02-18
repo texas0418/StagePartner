@@ -22,6 +22,9 @@ function RootLayoutNav() {
     >
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen name="modal" options={{ presentation: 'modal', headerShown: false }} />
+      <Stack.Screen name="warmup" options={{ headerShown: false }} />
+      <Stack.Screen name="song-finder" options={{ headerShown: false }} />
+      <Stack.Screen name="calendar" options={{ headerShown: false }} />
     </Stack>
   );
 }
